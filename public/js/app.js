@@ -1905,6 +1905,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {},
   data: function data() {
@@ -11174,60 +11209,154 @@ var render = function() {
         })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "estado", value: "estado" } }, [
-          _vm._v("Estado")
+      _c("div", [
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "estado", value: "estado" } }, [
+            _vm._v("Estado")
+          ]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.estado,
+                  expression: "form.estado"
+                }
+              ],
+              staticClass: "custom-select",
+              attrs: { id: "estado", onchange: "buscaCidades(this.value)" },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.$set(
+                    _vm.form,
+                    "estado",
+                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                  )
+                }
+              }
+            },
+            [
+              _c("option", { attrs: { value: "" } }),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "AC" } }, [_vm._v("Acre")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "AL" } }, [_vm._v("Alagoas")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "AP" } }, [_vm._v("Amapá")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "AM" } }, [_vm._v("Amazonas")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "BA" } }, [_vm._v("Bahia")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "CE" } }, [_vm._v("Ceará")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "DF" } }, [
+                _vm._v("Distrito Federal")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "ES" } }, [
+                _vm._v("Espírito Santo")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "GO" } }, [_vm._v("Goiás")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "MA" } }, [_vm._v("Maranhão")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "MT" } }, [_vm._v("Mato Grosso")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "MS" } }, [
+                _vm._v("Mato Grosso do Sul")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "MG" } }, [
+                _vm._v("Minas Gerais")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "PA" } }, [_vm._v("Pará")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "PB" } }, [_vm._v("Paraíba")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "PR" } }, [_vm._v("Paraná")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "PE" } }, [_vm._v("Pernambuco")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "PI" } }, [_vm._v("Piauí")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "RJ" } }, [
+                _vm._v("Rio de Janeiro")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "RN" } }, [
+                _vm._v("Rio Grande do Norte")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "RS" } }, [
+                _vm._v("Rio Grande do Sul")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "RO" } }, [_vm._v("Rondônia")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "RR" } }, [_vm._v("Roraima")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "SC" } }, [
+                _vm._v("Santa Catarina")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "SP" } }, [_vm._v("São Paulo")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "SE" } }, [_vm._v("Sergipe")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "TO" } }, [_vm._v("Tocantins")])
+            ]
+          )
         ]),
         _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.form.estado,
-              expression: "form.estado"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { id: "estado", type: "text", autofocus: "" },
-          domProps: { value: _vm.form.estado },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "cidades", value: "cidade" } }, [
+            _vm._v("Cidade")
+          ]),
+          _vm._v(" "),
+          _c("select", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.cidade,
+                expression: "form.cidade"
               }
-              _vm.$set(_vm.form, "estado", $event.target.value)
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "cidade", value: "cidade" } }, [
-          _vm._v("Cidade")
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.form.cidade,
-              expression: "form.cidade"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { id: "cidade", autofocus: "" },
-          domProps: { value: _vm.form.cidade },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+            ],
+            staticClass: "custom-select",
+            attrs: { id: "cidades" },
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.$set(
+                  _vm.form,
+                  "cidade",
+                  $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                )
               }
-              _vm.$set(_vm.form, "cidade", $event.target.value)
             }
-          }
-        })
+          })
+        ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [

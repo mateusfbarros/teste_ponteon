@@ -104,3 +104,5 @@ data._method = 'DELETE';
 this.$inertia.post('/posts/' + data.id, data)
 this.reset();
 
+
+
