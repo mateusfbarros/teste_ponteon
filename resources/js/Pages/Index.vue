@@ -2,7 +2,7 @@
     <div class="container">
         <div style="padding-top: 30px"></div>
         <div class="row justify-content-center">
-            <div class="col-md-10">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">Cadastro de Empresários</div>
 
@@ -14,7 +14,7 @@
         </div>
         <div style="padding-top: 30px"></div>
         <div class="row justify-content-center">
-            <div class="col-md-10">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">Listagem de Empresários</div>
                     <div class="card-body">

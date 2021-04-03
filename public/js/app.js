@@ -1949,7 +1949,8 @@ __webpack_require__.r(__webpack_exports__);
         celular: '',
         estado: '',
         cidade: '',
-        pai_empresarial: ''
+        pai_empresarial: '',
+        created_at: ''
       }
     };
   },
@@ -2103,6 +2104,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -2122,7 +2127,7 @@ __webpack_require__.r(__webpack_exports__);
       //console.log(empresario.id)
       this.$inertia["delete"]("/empresarios/".concat(id), {
         onBefore: function onBefore() {
-          return confirm('Deseja excluir esse Empresário?');
+          return confirm('Tem certeza que deseja excluir o\n' + 'registro?');
         }
       }); //window.location.reload()
       //alert(this.empresarios)
@@ -11151,7 +11156,7 @@ var render = function() {
       }
     },
     [
-      _c("div", { staticClass: "form-group" }, [
+      _c("div", { staticClass: "form-group col-md-8 mb-4" }, [
         _c(
           "label",
           { attrs: { for: "nome_completo", value: "nome_completo" } },
@@ -11181,7 +11186,7 @@ var render = function() {
         })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
+      _c("div", { staticClass: "form-group col-md-4 mb-2" }, [
         _c("label", { attrs: { for: "celular", value: "celular" } }, [
           _vm._v("Celular:")
         ]),
@@ -11210,7 +11215,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", [
-        _c("div", { staticClass: "form-group" }, [
+        _c("div", { staticClass: "form-group col-md-4 mb-2" }, [
           _c("label", { attrs: { for: "estado", value: "estado" } }, [
             _vm._v("Estado")
           ]),
@@ -11322,7 +11327,7 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
+        _c("div", { staticClass: "form-group col-md-6 mb-3" }, [
           _c("label", { attrs: { for: "cidades", value: "cidade" } }, [
             _vm._v("Cidade")
           ]),
@@ -11359,7 +11364,7 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
+      _c("div", { staticClass: "form-group col-md-8 mb-4" }, [
         _c(
           "label",
           { attrs: { for: "pai_empresarial", value: "pai empresarial" } },
@@ -11424,7 +11429,7 @@ var render = function() {
     _c("div", { staticStyle: { "padding-top": "30px" } }),
     _vm._v(" "),
     _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-10" }, [
+      _c("div", { staticClass: "col-md-12" }, [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-header" }, [
             _vm._v("Cadastro de Empresários")
@@ -11438,7 +11443,7 @@ var render = function() {
     _c("div", { staticStyle: { "padding-top": "30px" } }),
     _vm._v(" "),
     _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-10" }, [
+      _c("div", { staticClass: "col-md-12" }, [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-header" }, [
             _vm._v("Listagem de Empresários")
@@ -11508,13 +11513,19 @@ var render = function() {
               _vm._v(" "),
               _c("td", { attrs: { scope: "row" } }, [
                 _vm._v(
-                  "\n            " + _vm._s(empresario.estado) + "\n        "
+                  "\n            " +
+                    _vm._s(empresario.cidade) +
+                    " / " +
+                    _vm._s(empresario.estado) +
+                    "\n        "
                 )
               ]),
               _vm._v(" "),
               _c("td", { attrs: { scope: "row" } }, [
                 _vm._v(
-                  "\n            " + _vm._s(empresario.cidade) + "\n        "
+                  "\n            " +
+                    _vm._s(empresario.created_at) +
+                    "\n        "
                 )
               ]),
               _vm._v(" "),
@@ -11576,11 +11587,11 @@ var staticRenderFns = [
         ]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [
-          _vm._v("\n            UF\n        ")
+          _vm._v("\n            Cidade / UF\n        ")
         ]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [
-          _vm._v("\n            Cidade\n        ")
+          _vm._v("\n            Cadastrado em\n        ")
         ]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [

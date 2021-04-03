@@ -1,17 +1,17 @@
 <template>
     <form @submit.prevent="store">
-        <div class="form-group">
+        <div class="form-group col-md-8 mb-4">
             <label for="nome_completo" value="nome_completo">Nome Completo:</label>
             <input id="nome_completo" type="text" class="form-control" v-model="form.nome_completo" autofocus />
 
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-4 mb-2">
             <label for="celular" value="celular">Celular:</label>
             <input id="celular" type="text" class="form-control" v-model="form.celular" autofocus />
 
         </div>
         <div >
-            <div class="form-group">
+            <div class="form-group col-md-4 mb-2">
                 <label for="estado" value="estado">Estado</label>
                 <!--input id="estado" type="text" class="form-control" v-model="form.estado" autofocus /-->
                 <select id="estado" onchange="buscaCidades(this.value)" class="custom-select" v-model="form.estado">
@@ -46,7 +46,7 @@
                 </select>
 
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-6 mb-3">
                 <label for="cidades" value="cidade">Cidade</label>
                 <!--input id="cidade" class="form-control"  autofocus/-->
                 <select id="cidades" class="custom-select" v-model="form.cidade">
@@ -55,7 +55,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group col-md-8 mb-4">
             <label for="pai_empresarial" value="pai empresarial">Pai Empresarial</label>
             <input id="pai_empresarial" class="form-control" v-model="form.pai_empresarial" autofocus/>
 
@@ -83,6 +83,7 @@ export default {
                 estado: '',
                 cidade: '',
                 pai_empresarial: '',
+                created_at: '',
             }
         }
     },

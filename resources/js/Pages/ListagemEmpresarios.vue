@@ -12,11 +12,13 @@
                 Celular
             </th>
             <th scope="col">
-                UF
+                Cidade / UF
             </th>
+
             <th scope="col">
-                Cidade
+                Cadastrado em
             </th>
+
             <th scope="col">
                 Pai Empresarial
             </th>
@@ -41,11 +43,13 @@
                 {{ empresario.celular }}
             </td>
             <td scope="row">
-                {{ empresario.estado }}
+                {{ empresario.cidade }} / {{ empresario.estado }}
             </td>
+
             <td scope="row">
-                {{ empresario.cidade }}
+                {{ empresario. created_at }}
             </td>
+
             <td scope="row">
                 {{ empresario. pai_empresarial }}
             </td>
@@ -88,7 +92,8 @@ export default {
             //if (!confirm('Are you sure want to remove?')) return;
             //console.log(empresario.id)
             this.$inertia.delete(`/empresarios/${id}`, {
-                onBefore: () => confirm('Deseja excluir esse Empresário?'),})
+                onBefore: () => confirm('Tem certeza que deseja excluir o\n' +
+                    'registro?'),})
             //window.location.reload()
             //alert(this.empresarios)
             //this.$inertia.delete('/empresarios', this.button)
