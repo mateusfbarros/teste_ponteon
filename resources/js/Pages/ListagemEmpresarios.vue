@@ -20,6 +20,12 @@
             <th scope="col">
                 Pai Empresarial
             </th>
+            <th scope="col">
+                Rede
+            </th>
+            <th scope="col">
+
+            </th>
         </tr>
         </thead>
         <tbody
@@ -43,6 +49,12 @@
             <td scope="row">
                 {{ empresario. pai_empresarial }}
             </td>
+            <td scope="row">
+                [VER REDE]
+            </td>
+            <td scope="row">
+                <button type="button" class="btn btn-danger" @click="destroy(empresario.id)" >EXCLUIR</button>
+            </td>
         </tr>
         </tbody>
 
@@ -56,15 +68,39 @@
 
 <script>
 import Pagination from "../Shared/Pagination";
+import * as empresario from "postcss-selector-parser";
+
 
 export default {
     name: "ListagemEmpresarios",
     components: { Pagination },
+
     props: {
         empresarios: Object,
+    },
+    data() {
+        return {
+
+        }
+    },
+    methods: {
+        destroy(id){
+            //if (!confirm('Are you sure want to remove?')) return;
+            //console.log(empresario.id)
+            this.$inertia.delete(`/empresarios/${id}`, {
+                onBefore: () => confirm('Deseja excluir esse Empresário?'),})
+            //window.location.reload()
+            //alert(this.empresarios)
+            //this.$inertia.delete('/empresarios', this.button)
+
+        },
     },
 }
 </script>
 
-
+//function (data) {
+if (!confirm('Are you sure want to remove?')) return;
+data._method = 'DELETE';
+this.$inertia.post('/posts/' + data.id, data)
+this.reset();
 

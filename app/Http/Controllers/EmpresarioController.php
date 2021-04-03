@@ -74,12 +74,19 @@ class EmpresarioController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
+     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Empresario  $empresario
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Empresario $empresario)
+    public function destroy($id)
     {
-        //
+
+            Empresario::destroy($id);
+            return back(303);
+
+        //var_dump($empresario);
+        //$empresario->delete();
+
+        //return back(303);
     }
 }

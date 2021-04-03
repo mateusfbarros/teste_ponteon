@@ -23,3 +23,5 @@ Route::get('/', function () {
 Route::get('/empresarios', [\App\Http\Controllers\EmpresarioController::class, 'index']);
 
 Route::post('/empresarios', [\App\Http\Controllers\EmpresarioController::class, 'store']);
+
+Route::delete('/empresarios/{id}', [\App\Http\Controllers\EmpresarioController::class, 'destroy']);

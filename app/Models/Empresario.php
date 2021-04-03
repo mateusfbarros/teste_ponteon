@@ -10,10 +10,13 @@ class Empresario extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id',
         'nome_completo',
         'celular',
         'estado',
         'cidade',
         'pai_empresarial',
     ];
+
+
 }
