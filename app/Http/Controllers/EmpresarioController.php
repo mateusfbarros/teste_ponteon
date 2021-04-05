@@ -11,7 +11,7 @@ class EmpresarioController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Index', ['empresarios'=>Empresario::paginate()]);
+        return Inertia::render('Index', ['empresarios'=>Empresario::paginate(5)]);
     }
 
     /**
@@ -32,6 +32,12 @@ class EmpresarioController extends Controller
      */
     public function store(EmpresarioStoreRequest $request)
     {
+        //Request::validate([
+           // 'nome_completo' => ['required'],
+           // 'celular' => ['required'],
+          //  'estado' => ['required'],
+          //  'cidade' => ['required'],
+      //  ]);
 
         Empresario::create($request->toArray());
 

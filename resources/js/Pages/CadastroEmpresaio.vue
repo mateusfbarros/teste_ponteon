@@ -2,19 +2,19 @@
     <form @submit.prevent="store">
         <div class="form-group col-md-8 mb-4">
             <label for="nome_completo" value="nome_completo">Nome Completo:</label>
-            <input id="nome_completo" type="text" class="form-control" v-model="form.nome_completo" autofocus />
-
+            <input id="nome_completo" type="text" class="form-control" v-model="form.nome_completo" autofocus required/>
+            <!--div v-if="errors.nome_completo">{{ errors.nome_completo }}</div-->
         </div>
         <div class="form-group col-md-4 mb-2">
             <label for="celular" value="celular">Celular:</label>
-            <input id="celular" type="text" class="form-control" v-model="form.celular" autofocus />
+            <input id="celular" type="text" class="form-control" v-mask="'(##) #####-####'" v-model="form.celular" autofocus required/>
 
         </div>
-        <div >
+        <div class="row" style="padding-left: 15px">
             <div class="form-group col-md-4 mb-2">
                 <label for="estado" value="estado">Estado</label>
                 <!--input id="estado" type="text" class="form-control" v-model="form.estado" autofocus /-->
-                <select id="estado" onchange="buscaCidades(this.value)" class="custom-select" v-model="form.estado">
+                <select id="estado" onchange="buscaCidades(this.value)" class="custom-select" v-model="form.estado" required>
                     <option value=""></option>
                     <option value="AC">Acre</option>
                     <option value="AL">Alagoas</option>
@@ -49,21 +49,25 @@
             <div class="form-group col-md-6 mb-3">
                 <label for="cidades" value="cidade">Cidade</label>
                 <!--input id="cidade" class="form-control"  autofocus/-->
-                <select id="cidades" class="custom-select" v-model="form.cidade">
+                <select id="cidades" class="custom-select" v-model="form.cidade" required>
                 </select>
 
             </div>
         </div>
-
         <div class="form-group col-md-8 mb-4">
-            <label for="pai_empresarial" value="pai empresarial">Pai Empresarial</label>
-            <input id="pai_empresarial" class="form-control" v-model="form.pai_empresarial" autofocus/>
+            <label for="pai_empresarial" value="pai_empresarial">Pai Empresarial:</label>
+            <input id="pai_empresarial" type="text" class="form-control" v-model="form.pai_empresarial" autofocus />
 
         </div>
-        <button type="submit" class="btn btn-primary">
-            Salvar
-        </button>
+        <div class="float-right">
+            <button type="submit" class="btn btn-primary">
+                Salvar
+            </button>
+        </div>
+
     </form>
+
+
 
 
 
@@ -71,10 +75,21 @@
 
 <script>
 
+import ListagemEmpresarios from "./ListagemEmpresarios";
+import ComboboxPaiEmpresarios from "./ComboboxPaiEmpresarios";
+
+
 export default {
+    name: "CadastroEmpresarios",
     components: {
+        ComboboxPaiEmpresarios,
+        ListagemEmpresarios,
+    },
+    props: {
+        empresarios: Object,
 
     },
+
     data() {
         return {
             form: {
@@ -84,15 +99,33 @@ export default {
                 cidade: '',
                 pai_empresarial: '',
                 created_at: '',
+            },
+            empresarios: {
+                come_completo: String
             }
+
+
+
+
         }
     },
+
+
+
     methods: {
         store() {
-            this.$inertia.post('/empresarios', this.form)
-
+            this.$inertia.post('/', this.form)
+            
+            window.location.reload()
         },
+
+
     },
+
+
 }
 
 </script>
+
+
+

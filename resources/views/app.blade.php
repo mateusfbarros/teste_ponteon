@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet" />
     <script src="{{ mix('/js/app.js') }}" defer></script>
-    <title>Empresarios</title>
+    <title>Cadastro de Empresários</title>
 </head>
 <body onload="mods()">
     @inertia
@@ -5781,3 +5781,5 @@
         }
     }
 </script>
+
+

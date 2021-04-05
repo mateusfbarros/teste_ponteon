@@ -14,14 +14,14 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+    //return view('welcome');
+//});
 
 
 
-Route::get('/empresarios', [\App\Http\Controllers\EmpresarioController::class, 'index']);
+Route::get('/', [\App\Http\Controllers\EmpresarioController::class, 'index']);
 
-Route::post('/empresarios', [\App\Http\Controllers\EmpresarioController::class, 'store']);
+Route::post('/', [\App\Http\Controllers\EmpresarioController::class, 'store']);
 
-Route::delete('/empresarios/{id}', [\App\Http\Controllers\EmpresarioController::class, 'destroy']);
+Route::delete('/{id}', [\App\Http\Controllers\EmpresarioController::class, 'destroy']);
