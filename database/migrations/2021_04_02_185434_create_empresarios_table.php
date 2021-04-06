@@ -19,7 +19,7 @@ class CreateEmpresariosTable extends Migration
             $table->string('celular');
             $table->string('estado');
             $table->string('cidade');
-            $table->string('pai_empresarial');
+            $table->string('pai_empresarial')->nullable()->default(null);
             $table->timestamps();
         });
     }
