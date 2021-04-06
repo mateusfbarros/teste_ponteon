@@ -67,6 +67,7 @@
         </tbody>
 
     </table>
+
         <div class="px-6 pb-4 bg-white">
             <pagination :data="empresarios" />
         </div>

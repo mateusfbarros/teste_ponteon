@@ -1946,6 +1946,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -1955,7 +1959,7 @@ __webpack_require__.r(__webpack_exports__);
     ListagemEmpresarios: _ListagemEmpresarios__WEBPACK_IMPORTED_MODULE_0__.default
   },
   props: {
-    empresarios: Object
+    lista_pai_empresarial: Array
   },
   data: function data() {
     return {
@@ -1968,14 +1972,17 @@ __webpack_require__.r(__webpack_exports__);
         created_at: ''
       },
       empresarios: {
-        come_completo: String
+        nome_completo: String
       }
     };
   },
   methods: {
     store: function store() {
-      this.$inertia.post('/', this.form);
-      window.location.reload();
+      this.$inertia.post('/', this.form, {
+        onSuccess: function onSuccess() {
+          return form.reset();
+        }
+      });
     }
   }
 });
@@ -2091,6 +2098,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+var BACKDROP_BASE = 'https://image.tmdb.org/t/p/w1280';
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -2099,7 +2107,8 @@ __webpack_require__.r(__webpack_exports__);
     CadastroEmpresaio: _CadastroEmpresaio__WEBPACK_IMPORTED_MODULE_0__.default
   },
   props: {
-    empresarios: Object
+    empresarios: Object,
+    pai_empresarial: Array
   },
   mounted: function mounted() {
     console.log(this.empresarios);
@@ -2122,6 +2131,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Shared_Pagination__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Shared/Pagination */ "./resources/js/Shared/Pagination.vue");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
+//
 //
 //
 //
@@ -29078,33 +29088,51 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("div", { staticClass: "form-group col-md-8 mb-4" }, [
-        _c(
-          "label",
-          { attrs: { for: "pai_empresarial", value: "pai_empresarial" } },
-          [_vm._v("Pai Empresarial:")]
-        ),
+        _c("label", { attrs: { value: "pai_empresarial" } }, [
+          _vm._v("Pai Empresarial:")
+        ]),
         _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.form.pai_empresarial,
-              expression: "form.pai_empresarial"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { id: "pai_empresarial", type: "text", autofocus: "" },
-          domProps: { value: _vm.form.pai_empresarial },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.pai_empresarial,
+                expression: "form.pai_empresarial"
               }
-              _vm.$set(_vm.form, "pai_empresarial", $event.target.value)
+            ],
+            staticClass: "custom-select",
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.$set(
+                  _vm.form,
+                  "pai_empresarial",
+                  $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                )
+              }
             }
-          }
-        })
+          },
+          [
+            _c("option", { attrs: { value: "" } }),
+            _vm._v(" "),
+            _vm._l(_vm.lista_pai_empresarial, function(pai_empresarial) {
+              return _c("option", { key: pai_empresarial.id }, [
+                _vm._v(_vm._s(pai_empresarial.nome_completo))
+              ])
+            })
+          ],
+          2
+        )
       ]),
       _vm._v(" "),
       _vm._m(0)
@@ -29119,7 +29147,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "float-right" }, [
       _c(
         "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        { staticClass: "btn btn-success", attrs: { type: "submit" } },
         [_vm._v("\n            Salvar\n        ")]
       )
     ])
@@ -29182,7 +29210,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
+  return _c("div", { staticClass: "container ", style: _vm.styles }, [
     _c("div", { staticStyle: { "padding-top": "30px" } }),
     _vm._v(" "),
     _c("div", { staticClass: "row justify-content-center" }, [
@@ -29192,7 +29220,16 @@ var render = function() {
             _vm._v("Cadastro de Empresários")
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [_c("CadastroEmpresaio")], 1)
+          _c(
+            "div",
+            { staticClass: "card-body" },
+            [
+              _c("CadastroEmpresaio", {
+                attrs: { lista_pai_empresarial: _vm.pai_empresarial }
+              })
+            ],
+            1
+          )
         ])
       ])
     ]),

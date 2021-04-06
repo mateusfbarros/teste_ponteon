@@ -55,12 +55,16 @@
             </div>
         </div>
         <div class="form-group col-md-8 mb-4">
-            <label for="pai_empresarial" value="pai_empresarial">Pai Empresarial:</label>
-            <input id="pai_empresarial" type="text" class="form-control" v-model="form.pai_empresarial" autofocus />
+            <label value="pai_empresarial">Pai Empresarial:</label>
+            <select v-model="form.pai_empresarial" class="custom-select">
+                <option value=""></option>
+                <option v-for="pai_empresarial in lista_pai_empresarial"
+                        :key="pai_empresarial.id">{{ pai_empresarial.nome_completo }}</option>
+            </select>
 
         </div>
         <div class="float-right">
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-success">
                 Salvar
             </button>
         </div>
@@ -86,7 +90,8 @@ export default {
         ListagemEmpresarios,
     },
     props: {
-        empresarios: Object,
+        lista_pai_empresarial: Array,
+
 
     },
 
@@ -101,7 +106,7 @@ export default {
                 created_at: '',
             },
             empresarios: {
-                come_completo: String
+                nome_completo: String
             }
 
 
@@ -114,9 +119,13 @@ export default {
 
     methods: {
         store() {
-            this.$inertia.post('/', this.form)
-            
-            window.location.reload()
+            this.$inertia.post('/', this.form,{
+                    onSuccess: () => form.reset()
+            }
+
+            )
+
+
         },
 
 

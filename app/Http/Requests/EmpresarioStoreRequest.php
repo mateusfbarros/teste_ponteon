@@ -31,7 +31,7 @@ class EmpresarioStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            //'celular.unique' => 'unique'
+            'celular' => 'unique:empresarios,celular'
         ];
     }
 }
